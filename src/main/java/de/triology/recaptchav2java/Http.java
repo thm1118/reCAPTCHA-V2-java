@@ -55,6 +55,7 @@ class Http {
         try {
             LOG.trace("Opening connection to {}", url);
             con = openConnection(url);
+            con.setConnectTimeout(120*1000);
             return runnable.apply(con);
         } finally {
             if (con != null) {
